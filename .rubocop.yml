@@ -1,0 +1,19 @@
+AllCops:
+  TargetRubyVersion: 2.3
+  Exclude:
+    - spec/spec_helper.rb
+    - config/**
+    - config/initializers/**
+    - config/environments/**
+    - bin/**
+    - db/**
+    - db/data/**
+    - db/migrate/**
+    - lib/**
+    - test/**
+    - Rakefile
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Documentation:
+  Enabled: false
+
