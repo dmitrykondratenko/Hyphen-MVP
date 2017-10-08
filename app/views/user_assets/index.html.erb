@@ -1,0 +1,15 @@
+<h1>hello world!</h1>
+
+<% @assets.each do |a| %>
+  IPFS: <%= a.ipfs_hash %><br />
+  TRANSACTION ID: <%= a.ethereum_transaction_id %><br />
+  <%= image_tag "https://ipfs.io/ipfs/#{a.ipfs_hash}", height: '200'%><br />
+<% end %>
+
+<br />
+
+<%= form_tag({action: :create}, multipart: true) do %>
+  <%= file_field_tag 'picture' %>
+  <%= submit_tag "shit yeah!" %>
+<% end %>
+
