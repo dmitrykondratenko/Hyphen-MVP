@@ -11,9 +11,7 @@ class UserAssetsController < ApplicationController
     file = File.open(upload_params.tempfile)
     response = RestClient.post 'http://127.0.0.1:5001/api/v0/add', :myfile => file
     ipfs_hash = JSON.parse(response)["Hash"]
-    client = Ethereum::IpcClient.new("/home/ec2-user/.ethereum/geth.ipc", false)
-
-    contract = Ethereum::Contract.create(file: "app/contracts/HyphenTwo.sol", address: "0x465F9864766253f9a6E388034CaB01b65E3e7AF5", client: client)
+    contract = Ethereum::Contract.create(file: "/home/deploy/apps/hyphen/current/app/contracts/HyphenTwo.sol", address: "0x2BDBF71338B2E6BaEE43CcF82Fe735909081dF40")
     result = contract.transact_and_wait.register("name", current_user.email, "ipfshash", ipfs_hash, "created", Time.now.to_s, client: client)
     new_asset = UserAsset.create(user_id: current_user.id, ipfs_hash: ipfs_hash, ethereum_transaction_id: result.id)
     redirect_to action: "index"  end
