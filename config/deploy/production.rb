@@ -1,7 +1,7 @@
 # Change these
 server '104.131.23.8', port: 22, roles: [:web, :app, :db], primary: true
 
-set :repo_url,        'git@example.com:username/hyphen.git'
+set :repo_url,        'git@github.com:comike011/hyphen.git'
 set :application,     'hyphen'
 set :user,            'deploy'
 set :puma_threads,    [4, 16]
